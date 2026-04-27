@@ -21,12 +21,6 @@ export const Product = (product: ProductPropsWithMethods) => {
       <div className="card w-auto cursor-pointer shadow-sm merriweather" onClick={handleClick}>
         <figure>
           <ImageComponent image={{ alt: product.name, src: product.images[0], caption: product.name }} />
-          {/* <img
-            src={product.images[0]}
-            alt="product"
-            loading="lazy"
-            className="w-auto w-max-200px h-auto h-max-400px object-cover"                        
-          /> */}
         </figure>
         <div className="justify-end md:p-2 p-1 flex flex-col gap-1">
           <h2 className="card-title text-sm md:text-md">
