@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-dotenv.config({path: '../../.env'});
+dotenv.config({ path: '../../.env' }); // for deployed environment (Render)
+// dotenv.config(); // for local development
 
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -11,4 +12,4 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN;
 
 
 
-export { PORT, DATABASE_URL,TEST_DATABASE_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASSWORD, CORS_ORIGIN };
+export { PORT, DATABASE_URL, TEST_DATABASE_URL, JWT_SECRET, EMAIL_USER, EMAIL_PASSWORD, CORS_ORIGIN };
