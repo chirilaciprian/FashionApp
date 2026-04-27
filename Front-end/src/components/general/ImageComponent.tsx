@@ -34,6 +34,7 @@ const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
       effect="blur"
       onError={handleError}
       className="object-cover"
+      style={{ width: image.width, height: image.height }}
     />
   );
 };
