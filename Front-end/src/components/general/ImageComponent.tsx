@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -10,12 +10,19 @@ interface ImageProps {
   height?: number;
 }
 
+const FALLBACK_SRC = '/images/placeholder.png';
+
 const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
   const [imgSrc, setImgSrc] = useState(image.src);
 
+  useEffect(() => {
+    setImgSrc(image.src);
+  }, [image.src]);
+
   const handleError = () => {
-    // Set a placeholder image when the original image fails to load
-    setImgSrc('https://commercial.bunn.com/img/image-not-available.png');
+    if (imgSrc !== FALLBACK_SRC) {
+      setImgSrc(FALLBACK_SRC);
+    }
   };
 
   return (
