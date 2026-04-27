@@ -114,9 +114,3 @@ See [Back-end/README.md](./Back-end/README.md) for test database setup and confi
 | **ML** | Python, Flask, pandas, NumPy, scikit-learn, cosine similarity |
 | **Testing** | Jest, Supertest |
 | **Deployment** | Render |
-
----
-
-## 📄 License
-
-This project is licensed under the **ISC License**.
