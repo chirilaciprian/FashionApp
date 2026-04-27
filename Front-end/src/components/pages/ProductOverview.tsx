@@ -230,7 +230,7 @@ const ProductDetail = () => {
 
   return (
     <>
-    <Navbar />
+      <Navbar />
       <div className="bg-base-200 h-full w-full min-w-screen">
         <Alert type={alertType} message={alertMessage} isVisible={showAlert} />
         <div className="merriweather w-full h-full">
@@ -243,6 +243,7 @@ const ProductDetail = () => {
                   alt={product?.name || "Product Image"}
                   className="w-full h-full md:w-3/4 md:h-3/4 rounded-lg shadow-md mb-4"
                   id="mainImage"
+                  onError={(e) => { (e.target as HTMLImageElement).src = "/images/placeholder.png"; }}
                 />
                 <div className="flex gap-4 py-4 justify-center overflow-x-auto">
                   {product?.images?.map((src: string, index: number) => (
@@ -252,6 +253,7 @@ const ProductDetail = () => {
                       alt={`Thumbnail ${index + 1}`}
                       className="w-16 sm:w-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
                       onClick={() => changeImage(src)}
+                      onError={(e) => { (e.target as HTMLImageElement).src = "/images/placeholder.png"; }}
                     />
                   ))}
                 </div>
