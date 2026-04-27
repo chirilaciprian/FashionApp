@@ -14,14 +14,17 @@ const FALLBACK_SRC = '/images/placeholder.png';
 
 const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
   const [imgSrc, setImgSrc] = useState(image.src);
+  const [isFallback, setIsFallback] = useState(false);
 
   useEffect(() => {
     setImgSrc(image.src);
+    setIsFallback(false);
   }, [image.src]);
 
   const handleError = () => {
     if (imgSrc !== FALLBACK_SRC) {
       setImgSrc(FALLBACK_SRC);
+      setIsFallback(true);
     }
   };
 
@@ -34,7 +37,7 @@ const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
       effect="blur"
       onError={handleError}
       className="object-cover"
-      style={{ width: image.width, height: image.height }}
+      style={isFallback ? { width: '100%', height: '100%', objectFit: 'cover' } : undefined}
     />
   );
 };
