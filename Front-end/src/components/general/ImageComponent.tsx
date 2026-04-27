@@ -33,7 +33,7 @@ const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
       width={image.width}
       effect="blur"
       onError={handleError}
-      className="object-cover"
+      className="object-cover w-full aspect-square"
       style={{ width: image.width, height: image.height }}
     />
   );
