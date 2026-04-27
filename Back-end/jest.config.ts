@@ -13,6 +13,11 @@ const config: Config = {
   transform: {
     '^.+\\.(ts|tsx)$': 'ts-jest', // Transform TypeScript files using ts-jest
   },
+  globals: {
+    'ts-jest': {
+      tsconfig: 'tsconfig.json',
+    },
+  },
 };
 
 export default config;
