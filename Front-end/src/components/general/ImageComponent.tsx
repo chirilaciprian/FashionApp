@@ -10,7 +10,7 @@ interface ImageProps {
   height?: number;
 }
 
-const FALLBACK_SRC = '/images/placeholder.png';
+const FALLBACK_SRC = '/images/placeholder_img.png';
 
 const ImageComponent: React.FC<{ image: ImageProps }> = ({ image }) => {
   const [imgSrc, setImgSrc] = useState(image.src);
