@@ -1,96 +1,122 @@
-# ECommerce Website
+# 🛍️ FashionApp
 
-This is a full-stack **ECommerceApp** featuring a wide selection of clothes. It offers **seamless browsing, secure checkout, and a user-friendly interface** to enhance the shopping experience. Additionally, it includes an **AI-powered recommendation system** that suggests products based on user preferences.
+A full-stack **fashion e-commerce platform** with seamless product browsing, secure authentication, shopping cart, wishlists, order management, and an **AI-powered recommendation system** that suggests products using cosine similarity.
 
-## Deployment
+---
 
-The app is deployed and can be accessed at [https://fashionappcip.onrender.com/](https://fashionappcip.onrender.com/).
+## 🌐 Live Demo
 
-**Note:** Due to cold start latency, both the main API and the recommendation API may take up to **1 minute** to start when accessed for the first time.
+**[https://fashionappcip.onrender.com](https://fashionappcip.onrender.com)**
 
+> ⚠️ **Cold Start Notice:** This application is hosted on Render's free tier. Both the main API and the recommendation API spin down after inactivity and may take up to **60 seconds** to respond on the first request. Subsequent requests will be fast.
 
-## Tech Stack
+---
 
-- **Frontend**:
-  - React
-  - Vite
-  - Tailwind CSS + DaisyUI
-  - TypeScript
-- **Backend**:
-  - Node.js
-  - Express
-  - TypeScript
-- **Machine Learning**:
-  - Python (Flask API)
-  - Cosine Similarity for product recommendations
-- **Testing**:
-  - Jest
-  - Supertest
-- **Database**:
-  - PostgreSQL
-  - Prisma ORM
+## ✨ Features
 
-## Machine Learning Recommendation System
+- 🔐 **Authentication** — Register, login, and JWT-based sessions
+- 🛒 **Shopping Cart** — Add, update, and remove items
+- ❤️ **Wishlist** — Save favourite products for later
+- 📦 **Orders** — Place and track orders
+- ⭐ **Ratings & Reviews** — Rate and review products
+- 📂 **Categories** — Browse products by category
+- 🔍 **Search** — Find products quickly
+- 📧 **Email Notifications** — Order confirmation via Nodemailer
+- 🤖 **AI Recommendations** — Personalised suggestions powered by cosine similarity
 
-This e-commerce platform features a **product recommendation system** powered by **cosine similarity**. The system is implemented in **Python** and runs as a **Flask API**, which exposes an endpoint to send and receive recommendation data. The algorithm analyzes product descriptions, categories, and user interactions to provide **personalized suggestions**.
+---
 
-## Installation
+## 🏗️ Architecture
 
-Follow these steps to set up and run the project locally:
+The project is a **monorepo** with three independent services:
 
-1. **Clone the Repository**:
+```
+FashionApp/
+├── Front-end/          → React SPA (Vite + TypeScript + Tailwind)
+├── Back-end/           → REST API (Express + TypeScript + Prisma)
+└── MachineLearning/    → Recommendation API (Python + Flask)
+```
 
-   ```sh
-   git clone https://github.com/yourusername/ECommerceApp.git
-   cd ECommerceApp
-   ```
+| Service | Tech | Port | README |
+|---|---|---|---|
+| Frontend | React 18, Vite, Tailwind CSS, Redux Toolkit | `5173` | [Front-end/README.md](./Front-end/README.md) |
+| Backend | Express, Prisma, PostgreSQL, JWT | `3000` | [Back-end/README.md](./Back-end/README.md) |
+| ML API | Flask, pandas, scikit-learn | `5001` | [MachineLearning/README.md](./MachineLearning/README.md) |
 
-2. **Install Backend Dependencies**:
+> 📖 **Each folder contains its own README** with detailed project structure, setup instructions, API reference, and configuration docs.
 
-   ```sh
-   cd backend
-   npm install
-   ```
+---
 
-3. **Install Frontend Dependencies**:
+## 🚀 Quick Start
 
-   ```sh
-   cd frontend
-   npm install
-   ```
+### Prerequisites
 
-4. **Set Up the Database**:
+- Node.js >= 18
+- Python >= 3.9
+- PostgreSQL
 
-   - Ensure **PostgreSQL** is running.
-   - Configure the **Prisma schema**.
-   - **Seed the Database**:
-     ```sh
-     npx ts-node src/utils/ImportCategoriesFromCsv.ts
-     npx ts-node src/utils/ImportProductsFromCsv.ts
-     npx ts-node src/utils/priceUpdates.ts
-     npx ts-node src/utils/applyRandomDiscounts.ts
-     ```
+### 1. Clone
 
-5. **Run the Machine Learning API**:
+```sh
+git clone https://github.com/chirilaciprian/FashionApp.git
+cd FashionApp
+```
 
-   ```sh   
-   pip install
-   python app.py
-   ```
+### 2. Backend
 
-6. **Run the Backend Server**:
+```sh
+cd Back-end
+npm install
+# Configure .env (see Back-end/README.md)
+npx prisma migrate deploy --schema=prisma/schema.prisma
+npm run start
+```
 
-   ```sh
-   cd backend
-   npm run start
-   ```
+### 3. Machine Learning API
 
-7. **Run the Frontend**:
+```sh
+cd MachineLearning
+pip install -r requirements.txt
+cd API
+python app.py
+```
 
-   ```sh
-   cd frontend
-   npm run dev
-   ```
+### 4. Frontend
 
-Now, the app should be running locally, and the **recommendation system** will provide personalized product suggestions based on user behavior.
+```sh
+cd Front-end
+npm install
+# Configure .env (see Front-end/README.md)
+npm run dev
+```
 
+The app will be running at `http://localhost:5173`.
+
+---
+
+## 🧪 Testing
+
+```sh
+cd Back-end
+npm run test
+```
+
+See [Back-end/README.md](./Back-end/README.md) for test database setup and configuration.
+
+---
+
+## 🛠️ Tech Stack Overview
+
+| Layer | Technologies |
+|---|---|
+| **Frontend** | React 18, Vite, TypeScript, Tailwind CSS, DaisyUI, Redux Toolkit, React Router v6 |
+| **Backend** | Node.js, Express, TypeScript, Prisma ORM, PostgreSQL, JWT, Zod, Winston |
+| **ML** | Python, Flask, pandas, NumPy, scikit-learn, cosine similarity |
+| **Testing** | Jest, Supertest |
+| **Deployment** | Render |
+
+---
+
+## 📄 License
+
+This project is licensed under the **ISC License**.
